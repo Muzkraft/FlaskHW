@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+
+{% block title %} Одеться {% endblock %}
+
+{% block content %}
+    <h1>Шмот от кутюр на любой портмоне!</h1>
+    <div class="card-group">
+        {% for item in clothes %}
+            <div class="card">
+                <img src='{{ item.pic }}' class="card-img-top" alt="одёжка">
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.title }}</h5>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">{{ item.date }}</small>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
