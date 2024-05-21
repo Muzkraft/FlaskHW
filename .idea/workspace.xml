@@ -4,19 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dea7539b-6d72-4a1d-8246-a86cfcbae9ea" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Hw1_eShop.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shop_app.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/clothes.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/jackets.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/shoes.html" afterDir="false" />
+    <list default="true" id="dea7539b-6d72-4a1d-8246-a86cfcbae9ea" name="Changes" comment="first task">
+      <change afterPath="$PROJECT_DIR$/static/images/1.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/2.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/3.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/signin.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/sign-in.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/welcome.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Hw1_eShop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/HW2_SignIn.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop_app.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop_app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/clothes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/clothes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/jackets.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/jackets.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/shoes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/shoes.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,27 +36,45 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Muzkraft&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Muzkraft/FlaskHW.git&quot;,
+    &quot;accountId&quot;: &quot;240f95fb-9c7e-47dc-8367-1229dd7cc602&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2gYMjJR1coWgbJStfpvjX6qaEnW" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "DefaultHtmlFileTemplate": "HTML File",
     "Python.shop_app.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "E:/Edu/Flask/HW/Hw1_eShop"
+    "last_opened_file_path": "E:/Edu/Flask/Lections/Sem2/task.py"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Edu\Flask\HW\Hw1_eShop" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Edu\Flask\HW\Hw1_eShop\templates" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -73,6 +93,23 @@
       <option name="presentableId" value="Default" />
       <updated>1715870191454</updated>
     </task>
+    <task id="LOCAL-00001" summary="first task">
+      <option name="closed" value="true" />
+      <created>1715878712241</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1715878712241</updated>
+    </task>
+    <task id="LOCAL-00002" summary="first task">
+      <option name="closed" value="true" />
+      <created>1715878808247</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1715878808247</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -85,5 +122,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="first task" />
+    <option name="LAST_COMMIT_MESSAGE" value="first task" />
   </component>
 </project>

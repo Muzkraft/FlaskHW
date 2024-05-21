@@ -1,0 +1,18 @@
+{% extends 'index.html' %}
+
+{% block title %} Приветствую! {% endblock %}
+
+{% block content %}
+     {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}"> {{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <h1>Привет {{ name }}</h1>
+    <form action=" " method='POST'>
+        <button class="btn btn-primary">Выписаться</button>
+    </form>
+
+{% endblock %}
