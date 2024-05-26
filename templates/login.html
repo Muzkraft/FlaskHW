@@ -1,6 +1,6 @@
 {% extends 'index.html' %}
 
-{% block title %} Регистрация
+{% block title %} Вход
 
 {% endblock %}
 
@@ -11,30 +11,27 @@
     alert("Этот сайт использует печеньки для нормального функционирования!");
     }
   </script>
-
+  {% for category, message in get_flashed_messages(True) %}
+    <div class="alert alert-{{ category }}">{{ message }}</div>
+  {% endfor %}
   <body class="text-center">
 
     <main class="form-signin">
       <form method="post">
         <img src="{{ url_for('static', filename='/images/signin.jpg') }}" alt="" width="100" height="100">
-        <h1 class="h3 mb-3 fw-normal">Зарегистрируйтесь пажалста!</h1>
+        <h1 class="h3 mb-3 fw-normal">Войдите пажалста!</h1>
 
         <div class="form-floating">
-          <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+          <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
           <label for="email">Абонентский ящик</label>
         </div>
         <div class="form-floating">
-          <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+          <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
           <label for="name">Имя</label>
         </div>
 
-        <div class="checkbox mb-3">
-          <label>
-            <input type="checkbox" value="remember-me"> Я тебя не забуду
-          </label>
-        </div>
         <form action="/greetings/" method="GET">
-          <button class="w-100 btn btn-lg btn-primary" type="submit">Вписаться</button>
+          <button class="w-100 btn btn-lg btn-primary" type="submit">Войти</button>
         </form>
 
       </form>

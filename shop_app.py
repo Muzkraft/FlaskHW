@@ -1,23 +1,28 @@
-# Создать базовый шаблон для интернет-магазина, содержащий общие элементы дизайна (шапка, меню, подвал),
-# и дочерние шаблоны для страниц категорий товаров и отдельных товаров.
-# Например, создать страницы «Одежда», «Обувь» и «Куртка», используя базовый шаблон.
-
-
 import datetime
 import secrets
-
 from flask import Flask, render_template, url_for, request, redirect, flash, make_response, session
+from flask_wtf import CSRFProtect
+from werkzeug.security import generate_password_hash, check_password_hash
+from models import db, Users
+from forms import RegistrationForm
 
-shop_app = Flask(__name__)
-shop_app.secret_key = secrets.token_hex()
+# Задание 1
+
+app = Flask(__name__)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///userdatabse.db'
+app.config['SECRET_KEY'] = secrets.token_hex()
+app.secret_key = secrets.token_hex()
+csrf = CSRFProtect(app)
+db.init_app(app)
 
 
-@shop_app.route('/')
+@app.route('/')
 def index():
     return render_template('index.html')
 
 
-@shop_app.route('/shoes/')
+@app.route('/shoes/')
 def shoes():
     shoes = [
         {'title': 'боты брутальные', 'date': f"{datetime.datetime.now()}",
@@ -30,7 +35,7 @@ def shoes():
     return render_template('shoes.html', shoes=shoes)
 
 
-@shop_app.route('/clothes/')
+@app.route('/clothes/')
 def clothes():
     clothes = [
         {'title': 'подпивасная', 'date': f"{datetime.datetime.now()}",
@@ -43,7 +48,7 @@ def clothes():
     return render_template('clothes.html', clothes=clothes)
 
 
-@shop_app.route('/jackets/')
+@app.route('/jackets/')
 def jackets():
     jackets = [
         {'title': 'для пацанчика', 'date': f"{datetime.datetime.now()}",
@@ -57,52 +62,57 @@ def jackets():
 
 
 # Задание 2
-# Создать страницу, на которой будет форма для ввода имени и электронной почты,
-# при отправке которой будет создан cookie-файл с данными пользователя,
-# а также будет произведено перенаправление на страницу приветствия, где будет отображаться имя пользователя.
-# На странице приветствия должна быть кнопка «Выйти»,
-# при нажатии на которую будет удалён cookie-файл с данными пользователя
-# и произведено перенаправление на страницу ввода имени и электронной почты.
 
-@shop_app.route('/sign-in/', methods=['GET', 'POST'])
-def sign_in():
+
+@app.route('/login/', methods=['GET', 'POST'])
+def login():
     if request.method == 'POST':
-        if request.form.get('email') == '':
-            return render_template('sign-in.html')
-        email = request.form.get("email")
+        email = request.form["email"]
         name = request.form.get("name")
-        # session["name"] = request.form.get("name")
-        # session["mail"] = request.form.get("mail")
-        return redirect(url_for('greetings', name=name, email=email))
-    # session.pop("name", None)
-    # session.pop("mail", None)
+        response = make_response(redirect(url_for('greetings', name=name)))
+        response.set_cookie('username', name)
+        response.set_cookie('usermail', email)
+        session["username"] = request.form.get('username', 'email')
+        return response
 
-    return render_template('sign-in.html')
+    return render_template('login.html')
 
 
-@shop_app.route('/greetings/<name> <email>', methods=['GET', 'POST'])
-def greetings(name, email):
+@app.route('/greetings/<name>', methods=['GET', 'POST'])
+def greetings(name):
     flash(f'Welcome, {name}', 'success')
-    if request.method == 'GET':
-        request.args.get('name')
-        request.args.get('email')
-        response = make_response(render_template('welcome.html', name=name))
-        response.set_cookie(name, email)
+
+    if request.method == 'POST':
+        response = make_response(redirect(url_for('login')))
+        response.delete_cookie('username')
+        response.delete_cookie('usermail')
+        # session.pop("username", None)
+        # session.pop("email", None)
         return response
 
-    elif request.method == 'POST':
-        response = make_response(redirect(url_for('clear_sign_in')))
-        response.delete_cookie(name)
+    return render_template('welcome.html', name=name)
 
-        return response
-    else:
-        return redirect(url_for('clear_sign_in'))
+# Задание 3
 
+@app.cli.command('init-db')
+def init_db():
+    db.create_all()
+    print('OK')
 
-@shop_app.route('/sign-in/')
-def clear_sign_in():
-    return render_template('sign-in.html')
+@app.route('/register/', methods=['GET', 'POST'])
+def register():
+    form = RegistrationForm()
+    if request.method == 'POST' and form.validate():
+        # session.pop('_flashes', None)
+        # Обработка данных из формы
+        username = request.form.get('username')
+        email = request.form.get('email')
+        password = request.form.get('password')
+        password_hash = generate_password_hash(request.form['password'])
+        user = Users(username=username, email=email, password=password_hash)
+        db.session.add(user)
+        db.session.commit()
+        flash("Вы успешно зарегистрированы", "success")
+        return redirect(url_for('login'))
 
-
-if __name__ == '__main__':
-    shop_app.run(debug=True)
+    return render_template('registration.html', form=form, title='Регистрация')
