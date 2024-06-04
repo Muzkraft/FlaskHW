@@ -46,13 +46,13 @@ async def update_task(task_id: int, updated_task: Task):
     raise HTTPException(status_code=404, detail="Task not found")
 
 
-@app.delete("/tasks/{task_id}", response_model=Task)
+@app.delete("/tasks/{task_id}")
 async def delete_task(task_id: int):
     for i, task in enumerate(tasks):
         if task.id == task_id:
             tasks.pop(i)
             logger.info(f'Task {task.id} {task.title} deleted')
-            return task
+            return {'message': f'Task {task_id} {task.title} deleted!'}
     raise HTTPException(status_code=404, detail="Task not found")
 
 
